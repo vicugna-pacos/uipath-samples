@@ -3,11 +3,12 @@
     <x:Property Name="in_icname" Type="InArgument(x:String)" />
     <x:Property Name="out_succeed" Type="OutArgument(x:Boolean)" />
     <x:Property Name="in_inputArea" Type="InArgument(x:String)" />
+    <x:Property Name="out_icname" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1080,1596</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>496,466</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>IC選択_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -54,48 +55,50 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="1060,1536" sap2010:WorkflowViewState.IdRef="Sequence_8">
+  <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="476,406" sap2010:WorkflowViewState.IdRef="Sequence_8">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="ルート検索画面にアタッチ" sap:VirtualizedContainerService.HintSize="1018,1444" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="bce96ec80cd0f034996d28a9f472adc0" Selector="&lt;html title='料金・ルート検索 | 高速道路・高速情報はNEXCO 中日本' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="ルート検索画面にアタッチ" sap:VirtualizedContainerService.HintSize="434,314" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="bce96ec80cd0f034996d28a9f472adc0" Selector="&lt;html title='料金・ルート検索 | 高速道路・高速情報はNEXCO 中日本' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Flowchart sap2010:Annotation.AnnotationText="表示されたIC候補リストから、一致するものを探して選択する。&#xD;&#xA;候補が1件だけなら、それを選択。&#xD;&#xA;候補が複数ある場合、入力値と完全一致するものを選択する。&#xD;&#xA;それ以外は、IC名が見つからなかったと判定する。" DisplayName="IC選択" sap:VirtualizedContainerService.HintSize="984,1298" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+          <Flowchart sap2010:Annotation.AnnotationText="表示されたIC候補リストから、一致するものを探して選択する。&#xD;&#xA;候補が1件だけなら、それを選択。&#xD;&#xA;候補が複数ある場合、入力値と完全一致するものを選択する。&#xD;&#xA;それ以外は、IC名が見つからなかったと判定する。" DisplayName="IC選択" sap:VirtualizedContainerService.HintSize="985,1328" sap2010:WorkflowViewState.IdRef="Flowchart_2">
             <Flowchart.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="suggestExists" />
               <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="suggests" />
             </Flowchart.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <av:Point x:Key="ShapeLocation">510,2.5</av:Point>
                 <av:Size x:Key="ShapeSize">60,75</av:Size>
                 <av:PointCollection x:Key="ConnectorLocation">540,77.5 540,127</av:PointCollection>
-                <x:Double x:Key="Height">1190</x:Double>
-                <x:Double x:Key="Width">950</x:Double>
+                <x:Double x:Key="Height">1220</x:Double>
+                <x:Double x:Key="Width">951</x:Double>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <Flowchart.StartNode>
-              <x:Reference>__ReferenceID7</x:Reference>
+              <x:Reference>__ReferenceID10</x:Reference>
             </Flowchart.StartNode>
-            <FlowDecision x:Name="__ReferenceID6" Condition="[suggestExists]" DisplayName="IC名候補リストが出る" sap:VirtualizedContainerService.HintSize="108,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+            <FlowDecision x:Name="__ReferenceID7" Condition="[suggestExists]" DisplayName="IC名候補リストが出る" sap:VirtualizedContainerService.HintSize="108,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <av:Point x:Key="ShapeLocation">486,236.5</av:Point>
                   <av:Size x:Key="ShapeSize">108,87</av:Size>
                   <av:PointCollection x:Key="TrueConnector">486,280 380,280 380,334.5</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">594,280 604.936666666667,280 604.936666666667,816.5 484.936666666667,816.5 484.936666666667,846.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <FlowDecision.True>
-                <FlowStep x:Name="__ReferenceID0">
+                <FlowStep x:Name="__ReferenceID1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">280,334.5</av:Point>
@@ -121,7 +124,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:FindChildren>
                   <FlowStep.Next>
-                    <FlowDecision x:Name="__ReferenceID4" Condition="[suggests.Count &gt;= 1]" DisplayName="候補1件以上" sap:VirtualizedContainerService.HintSize="72,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
+                    <FlowDecision x:Name="__ReferenceID5" Condition="[suggests.Count &gt;= 1]" DisplayName="候補1件以上" sap:VirtualizedContainerService.HintSize="72,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -131,7 +134,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <FlowDecision.True>
-                        <FlowDecision x:Name="__ReferenceID2" Condition="[suggests.Count = 1]" DisplayName="候補1件" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                        <FlowDecision x:Name="__ReferenceID3" Condition="[suggests.Count = 1]" DisplayName="候補1件" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -142,7 +145,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <FlowDecision.True>
-                            <FlowStep x:Name="__ReferenceID3">
+                            <FlowStep x:Name="__ReferenceID4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">40,644.5</av:Point>
@@ -178,12 +181,12 @@
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:Click>
                               <FlowStep.Next>
-                                <FlowStep x:Name="__ReferenceID5">
+                                <FlowStep x:Name="__ReferenceID6">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <av:Point x:Key="ShapeLocation">9,730</av:Point>
                                       <av:Size x:Key="ShapeSize">262,60</av:Size>
-                                      <av:PointCollection x:Key="ConnectorLocation">520,180 520,214.5</av:PointCollection>
+                                      <av:PointCollection x:Key="ConnectorLocation">140,790 140,820 415.436666666667,820 415.436666666667,846.5</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <Assign DisplayName="戻り値にTrueを代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
@@ -199,16 +202,73 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </Assign>
+                                  <FlowStep.Next>
+                                    <FlowDecision x:Name="__ReferenceID0" Condition="[out_succeed]" DisplayName="IC選択できたかどうかで分岐" sap:VirtualizedContainerService.HintSize="139,87" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <av:Point x:Key="ShapeLocation">380.686666666667,846.5</av:Point>
+                                          <av:Size x:Key="ShapeSize">139,87</av:Size>
+                                          <av:PointCollection x:Key="TrueConnector">380.686666666667,890 260,890 260,944.5</av:PointCollection>
+                                          <av:PointCollection x:Key="FalseConnector">519.686666666667,890 660,890 660,940</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <FlowDecision.True>
+                                        <FlowStep x:Name="__ReferenceID8">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">160,944.5</av:Point>
+                                              <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:GetFullText IgnoreHidden="{x:Null}" DisplayName="選択したIC名を取得" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="GetFullText_6">
+                                            <ui:GetFullText.Target>
+                                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b648b05acaf89ae9f9d9585c21d343da" Selector="[in_inputArea]">
+                                                <ui:Target.TimeoutMS>
+                                                  <InArgument x:TypeArguments="x:Int32" />
+                                                </ui:Target.TimeoutMS>
+                                                <ui:Target.WaitForReady>
+                                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                </ui:Target.WaitForReady>
+                                              </ui:Target>
+                                            </ui:GetFullText.Target>
+                                            <ui:GetFullText.Text>
+                                              <OutArgument x:TypeArguments="x:String">[out_icname]</OutArgument>
+                                            </ui:GetFullText.Text>
+                                          </ui:GetFullText>
+                                        </FlowStep>
+                                      </FlowDecision.True>
+                                      <FlowDecision.False>
+                                        <FlowStep x:Name="__ReferenceID9">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">529,940</av:Point>
+                                              <av:Size x:Key="ShapeSize">262,60</av:Size>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign DisplayName="戻り値に×を代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[out_icname]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">×</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </FlowStep>
+                                      </FlowDecision.False>
+                                    </FlowDecision>
+                                  </FlowStep.Next>
                                 </FlowStep>
                               </FlowStep.Next>
                             </FlowStep>
                           </FlowDecision.True>
                           <FlowDecision.False>
-                            <FlowStep x:Name="__ReferenceID1">
+                            <FlowStep x:Name="__ReferenceID2">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">350,644.5</av:Point>
                                   <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">450,695.5 450,725.5 450.186666666667,725.5 450.186666666667,846.5</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="繰り返し (候補リストの各要素)" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[suggests]">
@@ -309,6 +369,9 @@
                                   </ActivityAction>
                                 </ui:ForEach.Body>
                               </ui:ForEach>
+                              <FlowStep.Next>
+                                <x:Reference>__ReferenceID0</x:Reference>
+                              </FlowStep.Next>
                             </FlowStep>
                           </FlowDecision.False>
                         </FlowDecision>
@@ -317,14 +380,17 @@
                   </FlowStep.Next>
                 </FlowStep>
               </FlowDecision.True>
+              <FlowDecision.False>
+                <x:Reference>__ReferenceID0</x:Reference>
+              </FlowDecision.False>
             </FlowDecision>
-            <x:Reference>__ReferenceID0</x:Reference>
             <x:Reference>__ReferenceID1</x:Reference>
             <x:Reference>__ReferenceID2</x:Reference>
             <x:Reference>__ReferenceID3</x:Reference>
             <x:Reference>__ReferenceID4</x:Reference>
             <x:Reference>__ReferenceID5</x:Reference>
-            <FlowStep x:Name="__ReferenceID7">
+            <x:Reference>__ReferenceID6</x:Reference>
+            <FlowStep x:Name="__ReferenceID10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">440,127</av:Point>
@@ -391,9 +457,12 @@
                 </ui:UiElementExists>
               </Sequence>
               <FlowStep.Next>
-                <x:Reference>__ReferenceID6</x:Reference>
+                <x:Reference>__ReferenceID7</x:Reference>
               </FlowStep.Next>
             </FlowStep>
+            <x:Reference>__ReferenceID0</x:Reference>
+            <x:Reference>__ReferenceID8</x:Reference>
+            <x:Reference>__ReferenceID9</x:Reference>
           </Flowchart>
         </ActivityAction>
       </ui:BrowserScope.Body>
