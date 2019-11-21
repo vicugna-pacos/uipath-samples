@@ -3,11 +3,12 @@
     <x:Property Name="in_inputArea" Type="InArgument(x:String)" />
     <x:Property Name="out_succeed" Type="OutArgument(x:Boolean)" />
     <x:Property Name="in_ICName" Type="InArgument(x:String)" />
+    <x:Property Name="out_ICName" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>496,466</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>496,506</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>IC選択_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -85,14 +86,14 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <Flowchart.StartNode>
-              <x:Reference>__ReferenceID2</x:Reference>
+              <x:Reference>__ReferenceID3</x:Reference>
             </Flowchart.StartNode>
             <FlowStep x:Name="__ReferenceID1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">440,204.5</av:Point>
+                  <av:Point x:Key="ShapeLocation">440,334.5</av:Point>
                   <av:Size x:Key="ShapeSize">200,51</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">540,255.5 540,284.5</av:PointCollection>
+                  <av:PointCollection x:Key="ConnectorLocation">540,385.5 540,414.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:FindChildren Children="[suggests]" DisplayName="子要素を探す：IC名" Filter="&lt;webctrl tag='SPAN' idx='1'/&gt;" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="FindChildren_6" Scope="FIND_DESCENDANTS">
@@ -116,17 +117,17 @@
                 <FlowStep x:Name="__ReferenceID0">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">440,284.5</av:Point>
+                      <av:Point x:Key="ShapeLocation">440,414.5</av:Point>
                       <av:Size x:Key="ShapeSize">200,51</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="繰り返し (見つかったIC名)" sap:VirtualizedContainerService.HintSize="625,804" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[suggests]">
+                  <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="繰り返し (見つかったIC名)" sap:VirtualizedContainerService.HintSize="625,904" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[suggests]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="ui:UiElement">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="ui:UiElement" Name="suggest" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="本体" sap:VirtualizedContainerService.HintSize="589,670" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <Sequence DisplayName="本体" sap:VirtualizedContainerService.HintSize="589,770" sap2010:WorkflowViewState.IdRef="Sequence_10">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="ui:GenericValue" Name="suggestedICName" />
                           </Sequence.Variables>
@@ -150,9 +151,9 @@
                               <OutArgument x:TypeArguments="ui:GenericValue">[suggestedICName]</OutArgument>
                             </ui:GetFullText.Text>
                           </ui:GetFullText>
-                          <If Condition="[in_ICName.Equals(suggestedICName)]" DisplayName="条件分岐：入力値と一致するか" sap:VirtualizedContainerService.HintSize="547,470" sap2010:WorkflowViewState.IdRef="If_9">
+                          <If Condition="[in_ICName.Equals(suggestedICName)]" DisplayName="条件分岐：入力値と一致するか" sap:VirtualizedContainerService.HintSize="547,570" sap2010:WorkflowViewState.IdRef="If_9">
                             <If.Then>
-                              <Sequence DisplayName="一致するIC名を選択する" sap:VirtualizedContainerService.HintSize="376,322" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                              <Sequence DisplayName="一致するIC名を選択する" sap:VirtualizedContainerService.HintSize="376,422" sap2010:WorkflowViewState.IdRef="Sequence_11">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -188,6 +189,14 @@
                                     <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                                   </Assign.Value>
                                 </Assign>
+                                <Assign DisplayName="戻り値にIC名を代入" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[out_ICName]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[suggestedICName]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
                                 <ui:Break DisplayName="繰り返しをブレーク" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Break_3" />
                               </Sequence>
                             </If.Then>
@@ -200,12 +209,12 @@
               </FlowStep.Next>
             </FlowStep>
             <x:Reference>__ReferenceID0</x:Reference>
-            <FlowStep x:Name="__ReferenceID2">
+            <FlowStep x:Name="__ReferenceID3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">409,110</av:Point>
                   <av:Size x:Key="ShapeSize">262,60</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">540,170 540,204.5</av:PointCollection>
+                  <av:PointCollection x:Key="ConnectorLocation">540,170 540,200</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_13">
@@ -222,9 +231,34 @@
                 </sap:WorkflowViewStateService.ViewState>
               </Assign>
               <FlowStep.Next>
-                <x:Reference>__ReferenceID1</x:Reference>
+                <FlowStep x:Name="__ReferenceID2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">409,200</av:Point>
+                      <av:Size x:Key="ShapeSize">262,60</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">540,260 540,334.5</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_ICName]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">×</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <FlowStep.Next>
+                    <x:Reference>__ReferenceID1</x:Reference>
+                  </FlowStep.Next>
+                </FlowStep>
               </FlowStep.Next>
             </FlowStep>
+            <x:Reference>__ReferenceID2</x:Reference>
           </Flowchart>
         </ActivityAction>
       </ui:BrowserScope.Body>

@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1112,1183</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1146,1343</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>高速料金検索_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -342,19 +342,24 @@
                       <av:PointCollection x:Key="ConnectorLocation">690,563 690,596.5</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="シーケンス：IC名の選択" sap:VirtualizedContainerService.HintSize="683,602" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <Sequence DisplayName="シーケンス：IC名の選択" sap:VirtualizedContainerService.HintSize="725,1132" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="ICName1" />
+                      <Variable x:TypeArguments="x:String" Name="ICName2" />
+                    </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[suggestExistsIC1]" DisplayName="条件分岐：出発IC候補リストの有無" sap:VirtualizedContainerService.HintSize="641,235" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If Condition="[suggestExistsIC1]" DisplayName="条件分岐：出発IC候補リストの有無" sap:VirtualizedContainerService.HintSize="683,400" sap2010:WorkflowViewState.IdRef="If_3">
                       <If.Then>
-                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ワークフロー ファイルを呼び出し" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Sub02_IC選択.xaml">
+                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="出発ICを選択" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Sub02_IC選択.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="x:String" x:Key="in_inputArea">&lt;webctrl id='flt_aimai_0_listHolder' tag='DIV' /&gt;</InArgument>
                             <OutArgument x:TypeArguments="x:Boolean" x:Key="out_succeed">[succeedIC1]</OutArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_ICName">[CStr(io_dataRow("出発IC"))]</InArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_ICName">[ICName1]</OutArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -364,28 +369,44 @@
                         </ui:InvokeWorkflowFile>
                       </If.Then>
                       <If.Else>
-                        <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_15">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:Boolean">[succeedIC1]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                          </Assign.Value>
+                        <Sequence DisplayName="シーケンス" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_13">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </Assign>
+                          <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[succeedIC1]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                            </Assign.Value>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Assign>
+                          <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[ICName1]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[CStr(io_dataRow("出発IC"))]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
                       </If.Else>
                     </If>
-                    <If Condition="[suggestExistsIC2]" DisplayName="条件分岐：到着IC候補リストの有無" sap:VirtualizedContainerService.HintSize="641,235" sap2010:WorkflowViewState.IdRef="If_4">
+                    <If Condition="[suggestExistsIC2]" DisplayName="条件分岐：到着IC候補リストの有無" sap:VirtualizedContainerService.HintSize="683,400" sap2010:WorkflowViewState.IdRef="If_4">
                       <If.Then>
-                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ワークフロー ファイルを呼び出し" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub02_IC選択.xaml">
+                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="到着ICを選択" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub02_IC選択.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="x:String" x:Key="in_inputArea">&lt;webctrl id='flt_aimai_1_listHolder' tag='DIV' /&gt;</InArgument>
                             <OutArgument x:TypeArguments="x:Boolean" x:Key="out_succeed">[succeedIC2]</OutArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_ICName">[CStr(io_dataRow("到着IC"))]</InArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_ICName">[ICName2]</OutArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -395,21 +416,52 @@
                         </ui:InvokeWorkflowFile>
                       </If.Then>
                       <If.Else>
-                        <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:Boolean">[succeedIC2]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                          </Assign.Value>
+                        <Sequence DisplayName="シーケンス" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_14">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </Assign>
+                          <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[succeedIC2]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                            </Assign.Value>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Assign>
+                          <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[ICName2]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[CStr(io_dataRow("到着IC"))]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
                       </If.Else>
                     </If>
+                    <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="683,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Object">[io_dataRow("出発IC(正)")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Object">[ICName1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="代入" sap:VirtualizedContainerService.HintSize="683,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Object">[io_dataRow("到着IC(正)")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Object">[ICName2]</InArgument>
+                      </Assign.Value>
+                    </Assign>
                   </Sequence>
                   <FlowStep.Next>
                     <FlowDecision x:Name="__ReferenceID4" Condition="[succeedIC1 AndAlso succeedIC2]" DisplayName="IC選択できた" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
